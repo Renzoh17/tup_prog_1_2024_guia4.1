@@ -1,0 +1,59 @@
+Proceso sin_titulo
+	Definir contadorIngresos, acumulador, contador, num, multiplicador, valor1 Como Entero;
+	Definir continuar Como Logico;
+	contadorIngresos <- 0;
+	continuar <- verdadero;
+	Definir acumuladorNum, contadorNum, i, mayor, lote como Entero;
+	Definir promedioLotes, promedio como Real;
+	promedio <- 0;
+	promedioLotes <- 0;
+	acumuladorNum <- 0;
+	contadorNum <- 0;
+	mayor = 0;
+	Para i<-1 Hasta 4 Con Paso 1 Hacer
+		Escribir 'Ingrese el primer numero: ';
+		Leer num;
+		Si mayor < num Entonces
+			mayor = num;
+			lote = i;
+		FinSi
+		Mientras num>-1 Hacer
+			Si num MOD 2==0 Entonces
+				valor1 <- 0;
+			SiNo
+				valor1 <- valor1+num;
+				contadorIngresos <- contadorIngresos+1;
+			FinSi
+			Si contadorIngresos==3 Entonces
+				multiplicador <- 3;
+			SiNo
+				multiplicador <- 1;
+			FinSi
+			acumulador <- acumulador+(valor1*multiplicador);
+			Escribir 'Ingrese nuevo numero, para finalizar ingrese un numero menor a 0';
+			Leer num;
+			Si mayor < num Entonces
+				mayor = num;
+				lote = i;
+			FinSi
+		FinMientras
+		Si contadorIngresos<>0 Entonces
+			promedio <- acumulador/contadorIngresos;
+			Escribir 'El promedio es: ', promedio;
+		SiNo
+			Escribir 'El promedio es 0';
+		FinSi
+		Si promedio > 20 Entonces
+			Escribir "Lote descartado";
+		SiNo
+			acumuladorNum = acumuladorNum + acumulador;
+			contadorNum = contadorNum + contadorIngresos;
+		FinSi
+		Si contadorNum <> 0 Entonces
+			promedioLotes <- acumuladorNum / contadorNum;
+			Escribir "El promedio de los lotes es: ", promedioLotes;
+		FinSi
+	FinPara
+	Escribir "El numero mayor ingresado es: ", mayor;
+	Escribir "En el lote: ", lote;
+FinProceso
